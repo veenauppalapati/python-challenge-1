@@ -127,6 +127,32 @@ if menu_category.isdigit():
                 # Store the item name as a variable
                 selected_item_name = menu_items[menu_item_num]["Item name"]
 
+                # Ask the customer for the quantity of the menu item
+                quantity = input("Enter the quantity for your selected item: ")
+
+                # Check if the quantity is a number, default to 1 if not
+                if quantity.isdigit():
+                    order_list.append({
+                        "Item name": selected_item_name,
+                        "Price": menu_items[menu_item_num]["Price"],
+                        "Quantity": int(quantity)
+                    })
+                else:
+                    order_list.append({
+                        "Item name": selected_item_name,
+                        "Price": menu_items[menu_item_num]["Price"],
+                        "Quantity": 1
+                    })
+    else:
+        # Tell the customer they didn't select a menu option
+        print(f"{menu_category} was not a menu option.")
+else:
+    # Tell the customer they didn't select a number
+    print("You didn't select a number.")
+
+
+print(order_list)
+
 
 
 
